@@ -70,3 +70,10 @@ Le serveur Metro de preview et son forwarder API sont des services temporaires d
 
 
 > **Note de validation responsive.** L’outil navigateur de cette session ne permettait pas de redimensionner directement la fenêtre en mobile/tablette. Les breakpoints et règles responsive existants ont été conservés ; le rendu desktop a été vérifié dans le navigateur réel, mais une capture visuelle dédiée mobile/tablette reste à effectuer dans un navigateur disposant d’un contrôle de viewport.
+
+
+## Landing page professionnelle ajoutée
+
+Une landing page dédiée est maintenant disponible sur `/landing`. Elle conserve l’identité Nothing d’Aniraku et présente une entrée éditoriale claire : navigation Discover/Schedule/Random, hero artwork AniList réel, CTA vers le catalogue et le random, bénéfices Discovery/Playback/Continuity, section immersion et CTA final vers l’application. Le CTA principal a été testé dans le navigateur et ouvre effectivement `/catalog`.
+
+Le premier-run onboarding global ne recouvre plus cette page marketing ; il reste actif sur les routes applicatives. La landing a été vérifiée dans le navigateur public à résolution desktop avec artwork chargé et sans erreur de rendu.

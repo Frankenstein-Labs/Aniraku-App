@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Platform, Pressable, Text, TextInput, View } from "react-native";
-import { Stack } from "expo-router";
+import { Stack, usePathname } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import * as SystemUI from "expo-system-ui";
 import { useFonts } from "expo-font";
@@ -41,6 +41,7 @@ export default function RootLayout() {
     "Caveat-SemiBold": require("../assets/fonts/Caveat-SemiBold.ttf"),
     "HennyPenny-Regular": require("../assets/fonts/HennyPenny-Regular.ttf"),
   });
+  const pathname = usePathname();
 
   useEffect(() => {
     void SystemUI.setBackgroundColorAsync(nothing.black).catch(() => {});
@@ -50,7 +51,7 @@ export default function RootLayout() {
     return <GestureHandlerRootView style={{ flex: 1, backgroundColor: nothing.black }}><StatusBar style="light" translucent backgroundColor="transparent" /><View style={{ flex: 1, backgroundColor: nothing.black }} /></GestureHandlerRootView>;
   }
 
-  return <GestureHandlerRootView style={{ flex: 1, backgroundColor: nothing.black }}><SafeAreaProvider><AppProviders><StartupPrefetcher /><StatusBar style="light" translucent backgroundColor="transparent" /><Stack screenOptions={{ headerShown: false, animation: "fade", contentStyle: { backgroundColor: nothing.black } }}><Stack.Screen name="(tabs)" /><Stack.Screen name="anime/[id]" /><Stack.Screen name="watch/[id]" /><Stack.Screen name="search" options={{ presentation: "card" }} /><Stack.Screen name="auth" options={{ presentation: "modal" }} /><Stack.Screen name="settings" options={{ presentation: "modal" }} /><Stack.Screen name="support" options={{ presentation: "modal" }} /><Stack.Screen name="library" /><Stack.Screen name="legal" options={{ presentation: "modal" }} /></Stack><ConnectivitySignal /><AppUpdatePrompt /><SupportPrompt /><AniListDownBanner /><FirstRunOnboarding onComplete={() => {}} /></AppProviders></SafeAreaProvider></GestureHandlerRootView>;
+  return <GestureHandlerRootView style={{ flex: 1, backgroundColor: nothing.black }}><SafeAreaProvider><AppProviders><StartupPrefetcher /><StatusBar style="light" translucent backgroundColor="transparent" /><Stack screenOptions={{ headerShown: false, animation: "fade", contentStyle: { backgroundColor: nothing.black } }}><Stack.Screen name="landing" /><Stack.Screen name="(tabs)" /><Stack.Screen name="anime/[id]" /><Stack.Screen name="watch/[id]" /><Stack.Screen name="search" options={{ presentation: "card" }} /><Stack.Screen name="auth" options={{ presentation: "modal" }} /><Stack.Screen name="settings" options={{ presentation: "modal" }} /><Stack.Screen name="support" options={{ presentation: "modal" }} /><Stack.Screen name="library" /><Stack.Screen name="legal" options={{ presentation: "modal" }} /></Stack><ConnectivitySignal /><AppUpdatePrompt /><SupportPrompt /><AniListDownBanner />{pathname !== "/landing" ? <FirstRunOnboarding onComplete={() => {}} /> : null}</AppProviders></SafeAreaProvider></GestureHandlerRootView>;
 }
 
 export function ErrorBoundary({ error, retry }: { error: Error; retry: () => void }) {
