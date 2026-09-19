@@ -1,6 +1,8 @@
-import { APP_CONFIG, requirePublicConfig } from "@/lib/app-config";
+import { APP_CONFIG } from "@/lib/app-config";
 
-const supabaseUrl = requirePublicConfig(APP_CONFIG.supabaseUrl, "EXPO_PUBLIC_SUPABASE_URL");
+// Avatars remain real Supabase assets when configured, while public preview
+// builds can still render signed-out screens without failing during import.
+const supabaseUrl = APP_CONFIG.supabaseUrl || "https://preview-placeholder.supabase.co";
 const BUCKET = "Anixen Avatars";
 
 const FILES = [

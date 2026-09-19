@@ -207,7 +207,7 @@ export default function CatalogScreen() {
           {topSearches.data?.media?.length ? (
             <View style={styles.topSection}>
               <DotLabel tone="live">TOP SEARCH</DotLabel>
-              <Text style={styles.sectionTitle}>What's trending right now</Text>
+              <Text style={styles.sectionTitle}>What&apos;s trending right now</Text>
               <View style={styles.topGrid}>
                 {topSearches.data.media.slice(0, 8).map((anime, index) => {
                   const title = animeTitle(anime);
